@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #010206;
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+}
+
+#canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+.start-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    padding-right: 10%;
+    background: linear-gradient(90deg, rgba(1, 2, 6, 0.2) 0%, rgba(1, 2, 6, 0.85) 100%);
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.start-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.start-content {
+    max-width: 500px;
+    text-align: left;
+}
+
+.sub-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    color: #00d9ff;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.main-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.6);
+    margin-bottom: 20px;
+}
+
+.main-title .highlight {
+    color: #ffb700;
+    text-shadow: 0 0 25px rgba(255, 183, 0, 0.8);
+}
+
+.intro-desc {
+    font-size: 1.2rem;
+    color: #a4c7e5;
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+
+.start-btn {
+    position: relative;
+    background: transparent;
+    border: 2px solid #00d9ff;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 16px 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+.start-btn:hover {
+    background: #00d9ff;
+    color: #010206;
+    box-shadow: 0 0 35px rgba(0, 217, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+
+.audio-control {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 20;
+}
+
+.music-btn {
+    background: rgba(8, 15, 28, 0.8);
+    border: 1px solid rgba(0, 217, 255, 0.4);
+    color: #00d9ff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    background: rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+.hidden-ui {
+    opacity: 0;
+    transition: opacity 1.5s ease 0.5s;
+    pointer-events: none;
+}
+
+.visible-ui {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.header-ui {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.header-ui h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: #cbebff;
+    text-shadow: 0 0 12px rgba(0, 217, 255, 0.9), 0 0 25px rgba(0, 140, 255, 0.6);
+}
+
+.header-ui p {
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    color: #7bb5e3;
+    margin-top: 8px;
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+}
+
+.footer-ui {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.footer-ui p {
+    font-size: 1.05rem;
+    letter-spacing: 3px;
+    color: #9cb3c9;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(1, 4, 12, 0.82);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.96);
+}
+
+.modal-card {
+    background: rgba(8, 15, 28, 0.9);
+    border: 1px solid rgba(0, 217, 255, 0.35);
+    box-shadow: 0 0 35px rgba(0, 217, 255, 0.2);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #00d9ff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.modal-tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #ffaa00;
+}
+
+.modal-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+.modal-body {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #d1e5f3;
+}
+.music-card {
+    background: rgba(0, 217, 255, 0.08);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.star-audio-player {
+    width: 100%;
+    margin-top: 10px;
+    height: 35px;
+    border-radius: 6px;
+    outline: none;
+}
+
+.spotify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1DB954;
+    color: #000000;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+}
+
+.spotify-btn:hover {
+    background-color: #1ed760;
+    box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
+    transform: translateY(-2px);
+}

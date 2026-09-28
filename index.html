@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión 28/09: La Galaxia de Marylin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+    <div id="start-overlay" class="start-overlay">
+        <div class="start-content">
+            <span class="sub-title">LA ESTRELLA MÁS BRILLANTE</span>
+            <h1 class="main-title">FELIZ CUMPLEAÑOS<br><span class="highlight">MARY</span></h1>
+            <p class="intro-desc">Un agujero negro atrae toda la luz del universo hacia sí y la hace brillar con más fuerza... eso quería representar: cómo iluminas todo a tu alrededor con solo estar presente.</p>
+            <button id="start-btn" class="start-btn">
+                <span>EMPEZAR EL VIAJE</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+    </div>
+    <header class="header-ui hidden-ui" id="header-ui">
+        <h1>28/09: ESTE RINCÓN DEL ESPACIO ES PARA TI</h1>
+        <p>Un detalle hecho desde cero con todo el cariño para alegrar tu día.</p>
+    </header>
+
+    <div id="audio-control" class="audio-control hidden-ui">
+        <button id="music-toggle" class="music-btn">🎵 <span id="music-status">PAUSAR</span></button>
+        <!-- Cambia 'assets/musica.mp3' por la ruta de tu canción o un enlace MP3 online -->
+        <audio id="bg-music" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <footer class="footer-ui hidden-ui" id="footer-ui">
+        <p>28 días de septiembre resumidos en 28 razones para celebrar que existes.</p>
+        <p>Haz clic en cada estrella para descubrir un mensaje especial.</p>
+    </footer>
+    </footer>
+    <div id="modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button id="close-btn" class="close-btn">&times;</button>
+            <div class="modal-header">
+                <span id="modal-tag" class="modal-tag">DÍA DE SEPTIEMBRE</span>
+                <h2 id="modal-title">Título de la Estrella</h2>
+            </div>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
